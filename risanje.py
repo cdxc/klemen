@@ -1,11 +1,11 @@
 import matplotlib.pyplot as plt
-import numpy as np
+from numpy import *
 plt.style.use(['dark_background'])
 
 
 #async def graph(ctx, arg):
 def narisi (function, xmin, xmax, ymin, ymax):
-    x = np.linspace(xmin-1,xmax+1, 222)
+    x = linspace(xmin-1,xmax+1, 222)
     y = eval(function)
 
     fig = plt.figure()
