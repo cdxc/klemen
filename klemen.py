@@ -1,10 +1,8 @@
 import discord
 from discord.ext import commands, tasks
 
-import matplotlib.pyplot as plt
-import numpy as np
-
 from risanje import narisi
+import re
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -27,12 +25,8 @@ async def echo(ctx, arg):
         await ctx.send(arg)
 
 @client.command()
-async def graph(ctx, arg):
-    narisi(arg, -10,10,-10,10)
+async def graph(ctx, *arg):
+    narisi(arg[0], float(arg[1]),float(arg[2]),float(arg[3]),float(arg[4]))
     await ctx.send(file=discord.File('fig.png'))
 
-
-
-with open('token', 'r') as tokenfile: token = tokenfile.read()
-client.run(token)
-
+with open('token', 'r') as token: client.run(token.read())
