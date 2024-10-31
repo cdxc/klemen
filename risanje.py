@@ -4,7 +4,7 @@ plt.style.use(['dark_background'])
 
 
 #async def graph(ctx, arg):
-def narisi (function, xmin, xmax, ymin, ymax):
+def risanje(function, xmin, xmax, ymin, ymax):
     x = linspace(xmin-1,xmax+1, 222)
     y = eval(function)
 
