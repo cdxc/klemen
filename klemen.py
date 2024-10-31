@@ -1,13 +1,19 @@
+import wikiquotes
 import discord
 from discord.ext import commands, tasks
 
 from risanje import risanje
 import re
 
+
 intents = discord.Intents.default()
 intents.message_content = True
 
 client = commands.Bot(command_prefix='', intents=intents, help_command=None)
+
+def citirej(koga):
+    results = wikiquotes.search(koga, "english")
+    return(wikiquotes.random_quote(koga, "english") + '\n ~ '+ results[0])
 
 @client.event
 async def on_ready():
@@ -17,8 +23,8 @@ async def on_ready():
 #        await channel.send(input("M: ")) 
 
 @client.command()
-async def status(ctx):
-    activity = discord.Game(name="algebra 1")
+async def status(ctx,arg):
+    activity = discord.Game(name=arg)
     await client.change_presence(status=discord.Status.idle, activity=activity)
 
 @client.command()
@@ -28,6 +34,10 @@ async def echo(ctx, arg):
     if arg != "":
         print("arg je neki")
         await ctx.send(arg)
+
+@client.command()
+async def citat(ctx,arg):
+    await ctx.send(citirej(arg))
 
 @client.command()
 async def pomagi(ctx):
