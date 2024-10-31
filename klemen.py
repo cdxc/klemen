@@ -32,6 +32,7 @@ async def echo(ctx, arg):
 @client.command()
 async def pomagi(ctx):
     await ctx.send("ne lol") 
+    await ctx.send("mogoce jutri") 
 
 @client.command()
 async def narisi(ctx, *, arg):
