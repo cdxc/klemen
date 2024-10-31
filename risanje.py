@@ -4,7 +4,7 @@ plt.style.use(['dark_background'])
 
 
 #async def graph(ctx, arg):
-def plot (function, xmin, xmax, ymin, ymax):
+def narisi (function, xmin, xmax, ymin, ymax):
     x = np.linspace(xmin-1,xmax+1, 222)
     y = eval(function)
 
@@ -25,6 +25,4 @@ def plot (function, xmin, xmax, ymin, ymax):
 
     plt.plot(x,y, 'c')
     plt.savefig("fig", bbox_inches='tight')
-    plt.show()
-
-plot('x**3', -10, 10, -10, 10)
+    #plt.show()
