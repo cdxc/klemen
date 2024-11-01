@@ -11,9 +11,6 @@ intents.message_content = True
 
 client = commands.Bot(command_prefix='', intents=intents, help_command=None)
 
-def citirej(koga):
-    results = wikiquotes.search(koga, "english")
-    return(wikiquotes.random_quote(koga, "english") + '\n ~ '+ results[0])
 
 @client.event
 async def on_ready():
@@ -37,7 +34,9 @@ async def echo(ctx, arg):
 
 @client.command()
 async def citat(ctx,arg):
-    await ctx.send(citirej(arg))
+    results = wikiquotes.search(arg, "english")
+    await ctx.send(wikiquotes.random_quote(arg, "english") + '\n ~ '+ results[0])
+    
 
 @client.command()
 async def pomagi(ctx):
@@ -46,18 +45,18 @@ async def pomagi(ctx):
 
 @client.command()
 async def narisi(ctx, *, arg):
-    dfsearch = re.search(r"df=\((\d+),(\d+)\)", arg) 
-    if dfsearch:
-        xmin = int(dfsearch.group(1))
-        xmax = int(dfsearch.group(2))
+    dfsearch = re.search(r"interval_x=\((\d+),(\d+)\)", arg) 
+    if xsearch:
+        xmin = int(xsearch.group(1))
+        xmax = int(xsearch.group(2))
     else:
         xmin = -10
         xmax = 10
 
-    zfsearch = re.search(r"zf=\((\d+),(\d+)\)", arg) 
+    ysearch = re.search(r"interval_y=\((\d+),(\d+)\)", arg) 
     if zfsearch:
-        ymin = int(zfsearch.group(1))
-        ymax = int(zfsearch.group(2))
+        ymin = int(ysearch.group(1))
+        ymax = int(ysearch.group(2))
     else:
         ymin = -10
         ymax = 10
